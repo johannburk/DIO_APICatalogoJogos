@@ -1,7 +1,7 @@
-using CatalogoJogos.Controllers.v1;
-using CatalogoJogos.Middleware;
-using CatalogoJogos.Repositories;
-using CatalogoJogos.Services;
+using APICatalogoJogo.Controllers.v1;
+using APICatalogoJogo.Middleware;
+using APICatalogoJogo.Repositories;
+using APICatalogoJogo.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +12,7 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace CatalogoJogos
+namespace APICatalogoJogo
 {
     public class Startup
     {
@@ -43,7 +43,7 @@ namespace CatalogoJogos
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CatalogoJogos", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "APICatalogoJogo", Version = "v1" });
 
                 var basePath = AppDomain.CurrentDomain.BaseDirectory;
                 var fileName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name + ".xml";
@@ -58,7 +58,7 @@ namespace CatalogoJogos
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CatalogoJogos v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "APICatalogoJogo v1"));
             }
             app.UseMiddleware<ExceptionMiddleware>();
 
